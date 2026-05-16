@@ -1,0 +1,39 @@
+name: bandwhich
+binary: bandwhich
+repo: imsnif/bandwhich
+homepage: https://github.com/imsnif/bandwhich
+category: network
+tags: [monitor, tui, bandwidth, rust, top]
+install: brew install bandwhich
+update: brew upgrade bandwhich
+check_version: bandwhich --version | awk '{print $2}'
+github_latest: true
+summary: "Terminal bandwidth utilization tool — live RX/TX per process, connection, remote host. macOS + Linux."
+help: |
+  ## bandwhich
+
+  TUI live network monitor — sort traffic by process, remote address, or connection. Cross-platform (macOS via libpcap, Linux raw sockets).
+
+  ### Launch
+  - `sudo bandwhich` — start TUI (root serve per packet capture)
+  - `sudo bandwhich -i en0` — pick interface (macOS Wi-Fi)
+  - `sudo bandwhich --interfaces` — list interfaces
+
+  ### TUI keys
+  - `q` quit
+  - `space` pause/resume refresh
+  - `tab` cycle sort (process / connection / remote)
+  - `+`/`-` zoom rows
+  - `f` filter by interface
+
+  ### Output modes
+  - `sudo bandwhich --raw` — plain text stream (CI/log)
+  - `sudo bandwhich --total-utilization` — cumulative since start
+  - `sudo bandwhich --show-dns` — resolve remote IPs to hostname
+
+  ### Pitfalls
+  - **Root required** (raw socket / libpcap)
+  - macOS: `en0` Wi-Fi, `en1` Ethernet — verifica con `--interfaces`
+  - DNS resolution (`--show-dns`) può rallentare update + leak query DNS
+  - Non distingue process figli — group by PID parent manuale
+  - Niente storia/grafico — solo snapshot live; per trend usa `nethogs`/`vnstat`

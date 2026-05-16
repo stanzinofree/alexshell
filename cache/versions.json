@@ -4,15 +4,20 @@
     "latest": "release-1.37.0",
     "local": "1.37.0"
   },
+  "bandwhich": {
+    "checked_at": "2026-05-16T07:54:55+00:00",
+    "latest": "0.23.1",
+    "local": "0.23.1"
+  },
   "bat": {
     "checked_at": "2026-05-16T07:46:30+00:00",
     "latest": "0.26.1",
-    "local": "/bin/sh: 1: bat: not found"
+    "local": "0.26.1"
   },
   "fd": {
     "checked_at": "2026-05-16T07:46:30+00:00",
     "latest": "10.4.2",
-    "local": "/bin/sh: 1: fd: not found"
+    "local": "10.4.2"
   },
   "glow": {
     "checked_at": "2026-05-16T07:46:30+00:00",

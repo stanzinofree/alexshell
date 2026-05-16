@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="it" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>bandwhich — alexshell</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Space+Grotesk:wght@400;500;700&family=Caveat:wght@500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="../index.html">alexshell</a>
+    <nav>
+      <a href="../index.html">tools</a>
+      <a href="../discarded.html">discarded</a>
+      <a href="https://github.com" target="_blank" rel="noopener">repo ↗</a>
+    </nav>
+  </header>
+  <main>
+<article class="tool">
+  <header class="tool-head">
+    <h1>bandwhich</h1>
+    <p class="lead">Terminal bandwidth utilization tool — live RX/TX per process, connection, remote host. macOS + Linux.</p>
+    <div class="meta">
+      <span class="pill">network</span>
+<span class="chip on">#monitor</span><span class="chip on">#tui</span><span class="chip on">#bandwidth</span><span class="chip on">#rust</span><span class="chip on">#top</span>    </div>
+    <div class="ver">
+      <span>local <code>0.23.1</code></span>
+      <span>latest <code>0.23.1</code></span>
+      <span class="badge badge-ok">
+up to date
+      </span>
+    </div>
+  </header>
+
+  <section class="cmds">
+    <h2>install / update</h2>
+    <pre><code># install
+brew install bandwhich
+
+# update
+&lt;built-in method update of dict object at 0x10259dd40&gt;
+
+# check version
+bandwhich --version | awk &#39;{print $2}&#39;</code></pre>
+  </section>
+
+  <section class="helpdoc">
+    <h2>bandwhich</h2>
+<p>TUI live network monitor — sort traffic by process, remote address, or connection. Cross-platform (macOS via libpcap, Linux raw sockets).</p>
+<h3>Launch</h3>
+<ul>
+<li><code>sudo bandwhich</code> — start TUI (root serve per packet capture)</li>
+<li><code>sudo bandwhich -i en0</code> — pick interface (macOS Wi-Fi)</li>
+<li><code>sudo bandwhich --interfaces</code> — list interfaces</li>
+</ul>
+<h3>TUI keys</h3>
+<ul>
+<li><code>q</code> quit</li>
+<li><code>space</code> pause/resume refresh</li>
+<li><code>tab</code> cycle sort (process / connection / remote)</li>
+<li><code>+</code>/<code>-</code> zoom rows</li>
+<li><code>f</code> filter by interface</li>
+</ul>
+<h3>Output modes</h3>
+<ul>
+<li><code>sudo bandwhich --raw</code> — plain text stream (CI/log)</li>
+<li><code>sudo bandwhich --total-utilization</code> — cumulative since start</li>
+<li><code>sudo bandwhich --show-dns</code> — resolve remote IPs to hostname</li>
+</ul>
+<h3>Pitfalls</h3>
+<ul>
+<li><strong>Root required</strong> (raw socket / libpcap)</li>
+<li>macOS: <code>en0</code> Wi-Fi, <code>en1</code> Ethernet — verifica con <code>--interfaces</code></li>
+<li>DNS resolution (<code>--show-dns</code>) può rallentare update + leak query DNS</li>
+<li>Non distingue process figli — group by PID parent manuale</li>
+<li>Niente storia/grafico — solo snapshot live; per trend usa <code>nethogs</code>/<code>vnstat</code></li>
+</ul>
+  </section>
+
+  <p><a href="https://github.com/imsnif/bandwhich" target="_blank" rel="noopener">homepage ↗</a></p>
+</article>
+  </main>
+  <footer>
+    <span>Made with &lt;3 by Alessandro</span>
+    <span class="mono">build 2026-05-16</span>
+  </footer>
+</body>
+</html>
