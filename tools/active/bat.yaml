@@ -1,0 +1,28 @@
+name: bat
+binary: bat
+repo: sharkdp/bat
+homepage: https://github.com/sharkdp/bat
+category: view
+tags: [cat, syntax, rust]
+install: brew install bat
+update: brew upgrade bat
+check_version: bat --version | awk '{print $2}'
+github_latest: true
+summary: "`cat` with syntax highlighting, line numbers, git diff markers."
+help: |
+  ## bat
+
+  Drop-in `cat` with syntax highlight + paging.
+
+  ### Top commands
+  - `bat file.py` — view with highlight
+  - `bat -p file` — plain, no decorations (pipe-safe)
+  - `bat -A file` — show non-printable chars
+  - `bat -r 10:50 file` — line range
+  - `bat --diff file` — show only modified lines (vs git)
+  - `bat -l json -` — force language on stdin
+  - `bat --list-themes` — pick theme
+
+  ### Pitfalls
+  - Auto-pager on TTY — use `-pp` or pipe to disable
+  - macOS has `cat`-alias collision risk; alias as `bcat` if needed

@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+.task/
+# keep cache/versions.json committed (drives site badges)

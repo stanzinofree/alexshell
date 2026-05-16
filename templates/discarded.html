@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% set subpath = false %}
+{% block title %}discarded — alexshell{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>discarded</h1>
+  <p class="lead">tools parked. recheck dopo data indicata.</p>
+</section>
+<div class="grid">
+  {% for t in tools %}
+  <div class="card status-discarded">
+    <div class="card-head">
+      <span class="name">{{ t.name }}</span>
+      <span class="badge badge-discarded">recheck {{ t.recheck_after|default('?') }}</span>
+    </div>
+    <p class="summary">{{ t.summary|default('') }}</p>
+    <p class="reason"><span class="caveat">perché:</span> {{ t.reason|default('—') }}</p>
+    <div class="card-foot">
+      <span class="mono">{{ t.binary|default(t.name) }}</span>
+      <span class="tags">{% for tag in t.tags or [] %}<em>#{{ tag }}</em>{% endfor %}</span>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

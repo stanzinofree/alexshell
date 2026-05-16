@@ -1,0 +1,13 @@
+name: example
+binary: example
+repo: owner/example
+homepage: https://example.com
+category: misc
+tags: [demo]
+summary: Example discarded tool — placeholder for schema.
+discarded_date: '2026-05-16'
+reason: 'Placeholder. Replace with real discard reason.'
+recheck_after: '2026-08-16'
+help: |
+  ## example
+  Not in use. Recheck after date in `recheck_after`.

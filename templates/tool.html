@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% set subpath = true %}
+{% block title %}{{ tool.name }} — alexshell{% endblock %}
+{% block content %}
+<article class="tool">
+  <header class="tool-head">
+    <h1>{{ tool.name }}</h1>
+    <p class="lead">{{ tool.summary|default('') }}</p>
+    <div class="meta">
+      <span class="pill">{{ tool.category }}</span>
+      {% for tag in tool.tags or [] %}<span class="chip on">#{{ tag }}</span>{% endfor %}
+    </div>
+    <div class="ver">
+      <span>local <code>{{ tool.local_version|default('?') }}</code></span>
+      <span>latest <code>{{ tool.latest_version|default('?') }}</code></span>
+      <span class="badge badge-{{ tool.status }}">
+        {% if tool.status == 'ok' %}up to date
+        {% elif tool.status == 'update' %}update available
+        {% else %}unchecked{% endif %}
+      </span>
+    </div>
+  </header>
+
+  <section class="cmds">
+    <h2>install / update</h2>
+    <pre><code># install
+{{ tool.install|default('-') }}
+
+# update
+{{ tool.update|default('-') }}
+
+# check version
+{{ tool.check_version|default('-') }}</code></pre>
+  </section>
+
+  <section class="helpdoc">
+    {{ tool.help_html|safe }}
+  </section>
+
+  <p><a href="{{ tool.homepage|default('#') }}" target="_blank" rel="noopener">homepage ↗</a></p>
+</article>
+{% endblock %}

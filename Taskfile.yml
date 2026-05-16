@@ -1,0 +1,71 @@
+version: '3'
+
+vars:
+  ROOT: '{{.TASKFILE_DIR}}'
+  ACTIVE: '{{.TASKFILE_DIR}}/tools/active'
+  DISCARDED: '{{.TASKFILE_DIR}}/tools/discarded'
+  SITE: '{{.TASKFILE_DIR}}/site'
+  CACHE: '{{.TASKFILE_DIR}}/cache'
+
+tasks:
+  default:
+    cmds:
+      - task --list
+
+  install:
+    desc: Install Python deps (Jinja2, PyYAML, requests)
+    cmds:
+      - pip3 install -r requirements.txt
+
+  add:
+    desc: 'Scaffold new tool YAML — usage: task add -- <name>'
+    cmds:
+      - bash scripts/add_tool.sh "{{.CLI_ARGS}}"
+
+  site:
+    desc: Build static site from YAML manifests
+    cmds:
+      - python3 scripts/build_site.py
+    sources:
+      - tools/active/*.yaml
+      - tools/discarded/*.yaml
+      - templates/**/*
+      - cache/versions.json
+    generates:
+      - site/index.html
+
+  check:
+    desc: Query GitHub releases for all active tools, write cache/versions.json
+    cmds:
+      - python3 scripts/check_updates.py
+
+  update:
+    desc: 'Run update_cmd for tool — usage: task update -- <name>'
+    cmds:
+      - |
+        name="{{.CLI_ARGS}}"
+        cmd=$(yq -r '.update' "{{.ACTIVE}}/${name}.yaml")
+        echo "→ ${cmd}"
+        eval "${cmd}"
+
+  launch:
+    desc: Open tmux 3-pane session (shell | fzf list | help viewer)
+    cmds:
+      - bash scripts/launch.sh
+
+  recheck:
+    desc: List discarded tools past recheck_after date
+    cmds:
+      - python3 scripts/recheck_discarded.py
+
+  serve:
+    desc: Serve site/ locally on :8000
+    dir: site
+    cmds:
+      - python3 -m http.server 8000
+
+  all:
+    desc: check + site
+    cmds:
+      - task: check
+      - task: site

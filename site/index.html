@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="it" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>alexshell — index</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Space+Grotesk:wght@400;500;700&family=Caveat:wght@500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="index.html">alexshell</a>
+    <nav>
+      <a href="index.html">tools</a>
+      <a href="discarded.html">discarded</a>
+      <a href="https://github.com" target="_blank" rel="noopener">repo ↗</a>
+    </nav>
+  </header>
+  <main>
+<section class="hero">
+  <h1>alexshell</h1>
+  <p class="lead">curated cli tools — 3 active, 1 discarded.</p>
+  <div class="filters">
+    <input id="q" type="search" placeholder="search name, tag, summary…" />
+    <div id="tagbar" class="tagbar">
+<button class="chip" data-tag="cat">cat</button><button class="chip" data-tag="fast">fast</button><button class="chip" data-tag="find">find</button><button class="chip" data-tag="grep">grep</button><button class="chip" data-tag="regex">regex</button><button class="chip" data-tag="rust">rust</button><button class="chip" data-tag="syntax">syntax</button>    </div>
+  </div>
+</section>
+
+<section class="cat">
+  <h2>search</h2>
+  <div class="grid">
+    <a class="card status-update" href="tool/fd.html"
+       data-name="fd" data-tags="find,rust,fast" data-summary="User-friendly `find` replacement, regex by default, gitignore-aware.">
+      <div class="card-head">
+        <span class="name">fd</span>
+        <span class="badge badge-update">
+update 10.4.2
+        </span>
+      </div>
+      <p class="summary">User-friendly `find` replacement, regex by default, gitignore-aware.</p>
+      <div class="card-foot">
+        <span class="mono">fd</span>
+        <span class="tags"><em>#find</em><em>#rust</em><em>#fast</em></span>
+      </div>
+    </a>
+    <a class="card status-ok" href="tool/ripgrep.html"
+       data-name="ripgrep" data-tags="grep,rust,fast,regex" data-summary="Recursive regex search, gitignore-aware, faster than grep/ag.">
+      <div class="card-head">
+        <span class="name">ripgrep</span>
+        <span class="badge badge-ok">
+up to date
+        </span>
+      </div>
+      <p class="summary">Recursive regex search, gitignore-aware, faster than grep/ag.</p>
+      <div class="card-foot">
+        <span class="mono">rg</span>
+        <span class="tags"><em>#grep</em><em>#rust</em><em>#fast</em><em>#regex</em></span>
+      </div>
+    </a>
+  </div>
+</section>
+<section class="cat">
+  <h2>view</h2>
+  <div class="grid">
+    <a class="card status-ok" href="tool/bat.html"
+       data-name="bat" data-tags="cat,syntax,rust" data-summary="`cat` with syntax highlighting, line numbers, git diff markers.">
+      <div class="card-head">
+        <span class="name">bat</span>
+        <span class="badge badge-ok">
+up to date
+        </span>
+      </div>
+      <p class="summary">`cat` with syntax highlighting, line numbers, git diff markers.</p>
+      <div class="card-foot">
+        <span class="mono">bat</span>
+        <span class="tags"><em>#cat</em><em>#syntax</em><em>#rust</em></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<script>
+const q = document.getElementById('q');
+const cards = document.querySelectorAll('.card');
+const tagBtns = document.querySelectorAll('.chip');
+let activeTag = null;
+function apply() {
+  const term = (q.value || '').toLowerCase();
+  cards.forEach(c => {
+    const name = c.dataset.name.toLowerCase();
+    const tags = c.dataset.tags.toLowerCase();
+    const sum = c.dataset.summary.toLowerCase();
+    const matchQ = !term || name.includes(term) || tags.includes(term) || sum.includes(term);
+    const matchT = !activeTag || tags.split(',').includes(activeTag);
+    c.style.display = (matchQ && matchT) ? '' : 'none';
+  });
+}
+q.addEventListener('input', apply);
+tagBtns.forEach(b => b.addEventListener('click', () => {
+  const t = b.dataset.tag;
+  activeTag = activeTag === t ? null : t;
+  tagBtns.forEach(x => x.classList.toggle('on', x.dataset.tag === activeTag));
+  apply();
+}));
+</script>
+  </main>
+  <footer>
+    <span>Made with &lt;3 by Alessandro</span>
+    <span class="mono">build 2026-05-16</span>
+  </footer>
+</body>
+</html>

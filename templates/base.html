@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="it" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% block title %}alexshell{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Space+Grotesk:wght@400;500;700&family=Caveat:wght@500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '../' if subpath else '' }}static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="{{ '../' if subpath else '' }}index.html">alexshell</a>
+    <nav>
+      <a href="{{ '../' if subpath else '' }}index.html">tools</a>
+      <a href="{{ '../' if subpath else '' }}discarded.html">discarded</a>
+      <a href="https://github.com" target="_blank" rel="noopener">repo ↗</a>
+    </nav>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <footer>
+    <span>Made with &lt;3 by Alessandro</span>
+    <span class="mono">build {{ today }}</span>
+  </footer>
+</body>
+</html>

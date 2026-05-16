@@ -1,0 +1,30 @@
+name: fd
+binary: fd
+repo: sharkdp/fd
+homepage: https://github.com/sharkdp/fd
+category: search
+tags: [find, rust, fast]
+install: brew install fd
+update: brew upgrade fd
+check_version: fd --version | awk '{print $2}'
+github_latest: true
+summary: "User-friendly `find` replacement, regex by default, gitignore-aware."
+help: |
+  ## fd
+
+  Simpler `find`. Regex syntax, colored output, parallel.
+
+  ### Top commands
+  - `fd PATTERN` — find files matching regex in cwd
+  - `fd -e py` — by extension
+  - `fd -t d PATTERN` — directories only
+  - `fd -H PATTERN` — include hidden
+  - `fd -I PATTERN` — include gitignored
+  - `fd PATTERN -x cmd {}` — exec per match
+  - `fd -X cmd` — batch exec
+  - `fd --changed-within 1d` — recent files
+  - `fd -s PATTERN` — case sensitive
+
+  ### Pitfalls
+  - Default regex, not glob — use `-g` for glob
+  - Respects `.gitignore` — use `-I` to disable

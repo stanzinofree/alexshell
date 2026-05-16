@@ -1,0 +1,31 @@
+name: ripgrep
+binary: rg
+repo: BurntSushi/ripgrep
+homepage: https://github.com/BurntSushi/ripgrep
+category: search
+tags: [grep, rust, fast, regex]
+install: brew install ripgrep
+update: brew upgrade ripgrep
+check_version: rg --version | head -1 | awk '{print $2}'
+github_latest: true
+summary: Recursive regex search, gitignore-aware, faster than grep/ag.
+help: |
+  ## ripgrep (rg)
+
+  Recursive search respecting `.gitignore`. Fast, sane defaults.
+
+  ### Top commands
+  - `rg PATTERN` — search cwd recursively
+  - `rg -t py PATTERN` — only Python files
+  - `rg -tnot js PATTERN` — exclude JS
+  - `rg -l PATTERN` — list matching filenames only
+  - `rg -A3 -B1 PATTERN` — 3 lines after, 1 before
+  - `rg -i PATTERN` — case insensitive
+  - `rg -F 'literal[str]'` — fixed string, no regex
+  - `rg --hidden --no-ignore` — include hidden + ignored
+  - `rg -g '!node_modules' PATTERN` — exclude glob
+  - `rg -C2 -n PATTERN path/` — context + line numbers, scoped
+
+  ### Pitfalls
+  - Skips `.gitignore` entries by default — use `--no-ignore` to override
+  - Literal `{}[]` need `-F` or escape

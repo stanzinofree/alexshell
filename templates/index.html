@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% set subpath = false %}
+{% block title %}alexshell — index{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>alexshell</h1>
+  <p class="lead">curated cli tools — {{ count_active }} active, {{ count_discarded }} discarded.</p>
+  <div class="filters">
+    <input id="q" type="search" placeholder="search name, tag, summary…" />
+    <div id="tagbar" class="tagbar">
+      {% for tag in tags %}<button class="chip" data-tag="{{ tag }}">{{ tag }}</button>{% endfor %}
+    </div>
+  </div>
+</section>
+
+{% for category, items in categories.items() %}
+<section class="cat">
+  <h2>{{ category }}</h2>
+  <div class="grid">
+    {% for t in items %}
+    <a class="card status-{{ t.status }}" href="tool/{{ t._slug }}.html"
+       data-name="{{ t.name }}" data-tags="{{ (t.tags or [])|join(',') }}" data-summary="{{ t.summary|default('') }}">
+      <div class="card-head">
+        <span class="name">{{ t.name }}</span>
+        <span class="badge badge-{{ t.status }}">
+          {% if t.status == 'ok' %}up to date
+          {% elif t.status == 'update' %}update {{ t.latest_version }}
+          {% else %}unchecked{% endif %}
+        </span>
+      </div>
+      <p class="summary">{{ t.summary|default('') }}</p>
+      <div class="card-foot">
+        <span class="mono">{{ t.binary }}</span>
+        <span class="tags">{% for tag in t.tags or [] %}<em>#{{ tag }}</em>{% endfor %}</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endfor %}
+
+<script>
+const q = document.getElementById('q');
+const cards = document.querySelectorAll('.card');
+const tagBtns = document.querySelectorAll('.chip');
+let activeTag = null;
+function apply() {
+  const term = (q.value || '').toLowerCase();
+  cards.forEach(c => {
+    const name = c.dataset.name.toLowerCase();
+    const tags = c.dataset.tags.toLowerCase();
+    const sum = c.dataset.summary.toLowerCase();
+    const matchQ = !term || name.includes(term) || tags.includes(term) || sum.includes(term);
+    const matchT = !activeTag || tags.split(',').includes(activeTag);
+    c.style.display = (matchQ && matchT) ? '' : 'none';
+  });
+}
+q.addEventListener('input', apply);
+tagBtns.forEach(b => b.addEventListener('click', () => {
+  const t = b.dataset.tag;
+  activeTag = activeTag === t ? null : t;
+  tagBtns.forEach(x => x.classList.toggle('on', x.dataset.tag === activeTag));
+  apply();
+}));
+</script>
+{% endblock %}

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="it" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>bat — alexshell</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Space+Grotesk:wght@400;500;700&family=Caveat:wght@500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="../index.html">alexshell</a>
+    <nav>
+      <a href="../index.html">tools</a>
+      <a href="../discarded.html">discarded</a>
+      <a href="https://github.com" target="_blank" rel="noopener">repo ↗</a>
+    </nav>
+  </header>
+  <main>
+<article class="tool">
+  <header class="tool-head">
+    <h1>bat</h1>
+    <p class="lead">`cat` with syntax highlighting, line numbers, git diff markers.</p>
+    <div class="meta">
+      <span class="pill">view</span>
+<span class="chip on">#cat</span><span class="chip on">#syntax</span><span class="chip on">#rust</span>    </div>
+    <div class="ver">
+      <span>local <code>0.26.1</code></span>
+      <span>latest <code>0.26.1</code></span>
+      <span class="badge badge-ok">
+up to date
+      </span>
+    </div>
+  </header>
+
+  <section class="cmds">
+    <h2>install / update</h2>
+    <pre><code># install
+brew install bat
+
+# update
+&lt;built-in method update of dict object at 0x10630ad00&gt;
+
+# check version
+bat --version | awk &#39;{print $2}&#39;</code></pre>
+  </section>
+
+  <section class="helpdoc">
+    <h2>bat</h2>
+<p>Drop-in <code>cat</code> with syntax highlight + paging.</p>
+<h3>Top commands</h3>
+<ul>
+<li><code>bat file.py</code> — view with highlight</li>
+<li><code>bat -p file</code> — plain, no decorations (pipe-safe)</li>
+<li><code>bat -A file</code> — show non-printable chars</li>
+<li><code>bat -r 10:50 file</code> — line range</li>
+<li><code>bat --diff file</code> — show only modified lines (vs git)</li>
+<li><code>bat -l json -</code> — force language on stdin</li>
+<li><code>bat --list-themes</code> — pick theme</li>
+</ul>
+<h3>Pitfalls</h3>
+<ul>
+<li>Auto-pager on TTY — use <code>-pp</code> or pipe to disable</li>
+<li>macOS has <code>cat</code>-alias collision risk; alias as <code>bcat</code> if needed</li>
+</ul>
+  </section>
+
+  <p><a href="https://github.com/sharkdp/bat" target="_blank" rel="noopener">homepage ↗</a></p>
+</article>
+  </main>
+  <footer>
+    <span>Made with &lt;3 by Alessandro</span>
+    <span class="mono">build 2026-05-16</span>
+  </footer>
+</body>
+</html>

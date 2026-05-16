@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="it" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>fd — alexshell</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Space+Grotesk:wght@400;500;700&family=Caveat:wght@500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="../index.html">alexshell</a>
+    <nav>
+      <a href="../index.html">tools</a>
+      <a href="../discarded.html">discarded</a>
+      <a href="https://github.com" target="_blank" rel="noopener">repo ↗</a>
+    </nav>
+  </header>
+  <main>
+<article class="tool">
+  <header class="tool-head">
+    <h1>fd</h1>
+    <p class="lead">User-friendly `find` replacement, regex by default, gitignore-aware.</p>
+    <div class="meta">
+      <span class="pill">search</span>
+<span class="chip on">#find</span><span class="chip on">#rust</span><span class="chip on">#fast</span>    </div>
+    <div class="ver">
+      <span>local <code>/bin/sh: fd: command not found</code></span>
+      <span>latest <code>10.4.2</code></span>
+      <span class="badge badge-update">
+update available
+      </span>
+    </div>
+  </header>
+
+  <section class="cmds">
+    <h2>install / update</h2>
+    <pre><code># install
+brew install fd
+
+# update
+&lt;built-in method update of dict object at 0x10630b640&gt;
+
+# check version
+fd --version | awk &#39;{print $2}&#39;</code></pre>
+  </section>
+
+  <section class="helpdoc">
+    <h2>fd</h2>
+<p>Simpler <code>find</code>. Regex syntax, colored output, parallel.</p>
+<h3>Top commands</h3>
+<ul>
+<li><code>fd PATTERN</code> — find files matching regex in cwd</li>
+<li><code>fd -e py</code> — by extension</li>
+<li><code>fd -t d PATTERN</code> — directories only</li>
+<li><code>fd -H PATTERN</code> — include hidden</li>
+<li><code>fd -I PATTERN</code> — include gitignored</li>
+<li><code>fd PATTERN -x cmd {}</code> — exec per match</li>
+<li><code>fd -X cmd</code> — batch exec</li>
+<li><code>fd --changed-within 1d</code> — recent files</li>
+<li><code>fd -s PATTERN</code> — case sensitive</li>
+</ul>
+<h3>Pitfalls</h3>
+<ul>
+<li>Default regex, not glob — use <code>-g</code> for glob</li>
+<li>Respects <code>.gitignore</code> — use <code>-I</code> to disable</li>
+</ul>
+  </section>
+
+  <p><a href="https://github.com/sharkdp/fd" target="_blank" rel="noopener">homepage ↗</a></p>
+</article>
+  </main>
+  <footer>
+    <span>Made with &lt;3 by Alessandro</span>
+    <span class="mono">build 2026-05-16</span>
+  </footer>
+</body>
+</html>
