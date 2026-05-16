@@ -49,7 +49,7 @@ def latest_release(repo: str) -> str | None:
             return tags[0]["name"] if tags else None
         r.raise_for_status()
         tag = r.json().get("tag_name", "")
-        return re.sub(r"^v", "", tag) or None
+        return re.sub(r"^(v|release-|rel-|release_)", "", tag) or None
     except Exception as e:
         return f"error: {e}"
 

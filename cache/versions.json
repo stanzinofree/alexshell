@@ -22,17 +22,17 @@
   "glow": {
     "checked_at": "2026-05-16T07:55:09+00:00",
     "latest": "2.1.2",
-    "local": "/bin/sh: 1: glow: not found"
+    "local": "2.1.2"
   },
   "havn": {
     "checked_at": "2026-05-16T07:55:09+00:00",
     "latest": "0.3.7",
-    "local": "/bin/sh: 1: havn: not found"
+    "local": "0.3.7"
   },
   "helix": {
     "checked_at": "2026-05-16T07:55:09+00:00",
     "latest": "25.07.1",
-    "local": "/bin/sh: 1: hx: not found"
+    "local": "25.07.1"
   },
   "lnav": {
     "checked_at": "2026-05-16T07:55:09+00:00",
@@ -42,11 +42,11 @@
   "ripgrep": {
     "checked_at": "2026-05-16T07:55:09+00:00",
     "latest": "15.1.0",
-    "local": "/bin/sh: 1: rg: not found"
+    "local": "15.1.0"
   },
   "rustscan": {
     "checked_at": "2026-05-16T07:55:09+00:00",
     "latest": "2.4.1",
-    "local": "/bin/sh: 1: rustscan: not found"
+    "local": "2.3.0"
   }
 }
