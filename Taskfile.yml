@@ -6,16 +6,33 @@ vars:
   DISCARDED: '{{.TASKFILE_DIR}}/tools/discarded'
   SITE: '{{.TASKFILE_DIR}}/site'
   CACHE: '{{.TASKFILE_DIR}}/cache'
+  VENV: '{{.TASKFILE_DIR}}/.venv'
+  PY:
+    sh: |
+      if [ -x "{{.TASKFILE_DIR}}/.venv/bin/python" ]; then
+        echo "{{.TASKFILE_DIR}}/.venv/bin/python"
+      else
+        echo "python3"
+      fi
 
 tasks:
   default:
     cmds:
       - task --list
 
-  install:
-    desc: Install Python deps (Jinja2, PyYAML, requests)
+  venv:
+    desc: Create local .venv and install deps (PEP 668 safe)
+    status:
+      - test -x {{.VENV}}/bin/python
     cmds:
-      - pip3 install -r requirements.txt
+      - python3 -m venv {{.VENV}}
+      - '{{.VENV}}/bin/pip install -q --upgrade pip'
+      - '{{.VENV}}/bin/pip install -q -r requirements.txt'
+
+  install:
+    desc: Alias for venv (install Python deps in .venv)
+    cmds:
+      - task: venv
 
   add:
     desc: 'Scaffold new tool YAML — usage: task add -- <name>'
@@ -24,8 +41,9 @@ tasks:
 
   site:
     desc: Build static site from YAML manifests
+    deps: [venv]
     cmds:
-      - python3 scripts/build_site.py
+      - '{{.PY}} scripts/build_site.py'
     sources:
       - tools/active/*.yaml
       - tools/discarded/*.yaml
@@ -36,27 +54,30 @@ tasks:
 
   check:
     desc: Query GitHub releases for all active tools, write cache/versions.json
+    deps: [venv]
     cmds:
-      - python3 scripts/check_updates.py
+      - '{{.PY}} scripts/check_updates.py'
 
   update:
     desc: 'Run update_cmd for tool — usage: task update -- <name>'
     cmds:
       - |
         name="{{.CLI_ARGS}}"
-        cmd=$(yq -r '.update' "{{.ACTIVE}}/${name}.yaml")
+        cmd=$({{.PY}} -c "import sys,yaml;print(yaml.safe_load(open(sys.argv[1]))['update'])" "{{.ACTIVE}}/${name}.yaml")
         echo "→ ${cmd}"
         eval "${cmd}"
 
   launch:
     desc: Open tmux 3-pane session (shell | fzf list | help viewer)
+    deps: [venv]
     cmds:
       - bash scripts/launch.sh
 
   recheck:
     desc: List discarded tools past recheck_after date
+    deps: [venv]
     cmds:
-      - python3 scripts/recheck_discarded.py
+      - '{{.PY}} scripts/recheck_discarded.py'
 
   serve:
     desc: Serve site/ locally on :8000
