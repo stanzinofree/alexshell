@@ -27,8 +27,8 @@
       <span class="pill">network</span>
 <span class="chip on">#portscan</span><span class="chip on">#rust</span><span class="chip on">#recon</span><span class="chip on">#nmap-wrapper</span>    </div>
     <div class="ver">
-      <span>local <code>/bin/sh: 1: rustscan: not found</code></span>
-      <span>latest <code>2.4.1</code></span>
+      <span>local <code>/bin/sh: /Users/alessandro/.cargo/bin/rustscan: cannot execute binary file</code></span>
+      <span>latest <code>error: 403 Client Error: rate limit exceeded for url: https://api.github.com/repos/bee-san/RustScan/releases/latest</code></span>
       <span class="badge badge-update">
 update available
       </span>
@@ -38,7 +38,7 @@ update available
   <section class="cmds">
     <h2>install / update</h2>
     <pre><code># install
-brew install rustscan
+cargo install rustscan --locked
 
 # update
 &lt;built-in method update of dict object at 0x7f0998908c40&gt;
