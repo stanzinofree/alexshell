@@ -20,21 +20,36 @@ if tmux has-session -t "$SESSION" 2>/dev/null; then
 fi
 
 tmux new-session -d -s "$SESSION" -x 220 -y 50 -c "$ROOT" -e "ALEXSHELL_ROOT=$ROOT"
-# apply project-local config (-f is ignored when tmux server already running, so source explicitly)
+# apply project-local config (-f is ignored when tmux server already running)
 tmux source-file "$ROOT/scripts/tmux.conf"
-tmux split-window -h -t "$SESSION":0 -p 45 -c "$ROOT" -e "ALEXSHELL_ROOT=$ROOT"
-tmux split-window -v -t "$SESSION":0.1 -p 60 -c "$ROOT" -e "ALEXSHELL_ROOT=$ROOT"
 
-# right-top: fzf picker (pane 1)
-tmux send-keys -t "$SESSION":0.1 "bash $ROOT/scripts/picker.sh" C-m
-# right-bottom: help viewer (pane 2)
-tmux send-keys -t "$SESSION":0.2 "bash $ROOT/scripts/watch_help.sh" C-m
+# resolve actual window/pane indices (tmux base-index may be 0 or 1 server-wide)
+W=$(tmux display-message -t "$SESSION" -p '#{window_index}')
+P0=$(tmux display-message -t "$SESSION:$W" -p '#{pane_index}')
 
-# pane labels (visible top-left of each pane via select-pane -T)
-tmux select-pane -t "$SESSION":0.0 -T "[1] shell"
-tmux select-pane -t "$SESSION":0.1 -T "[2] list"
-tmux select-pane -t "$SESSION":0.2 -T "[3] help"
+# split vertically (left | right)
+tmux split-window -h -t "$SESSION:$W.$P0" -p 45 -c "$ROOT" -e "ALEXSHELL_ROOT=$ROOT"
+P1=$(tmux display-message -t "$SESSION:$W" -p '#{pane_index}')
+
+# split right pane horizontally (top | bottom)
+tmux split-window -v -t "$SESSION:$W.$P1" -p 60 -c "$ROOT" -e "ALEXSHELL_ROOT=$ROOT"
+P2=$(tmux display-message -t "$SESSION:$W" -p '#{pane_index}')
+
+# right-top: fzf picker
+tmux send-keys -t "$SESSION:$W.$P1" "bash $ROOT/scripts/picker.sh" C-m
+# right-bottom: help viewer
+tmux send-keys -t "$SESSION:$W.$P2" "bash $ROOT/scripts/watch_help.sh" C-m
+
+# pane labels + border
+tmux select-pane -t "$SESSION:$W.$P0" -T "[1] shell"
+tmux select-pane -t "$SESSION:$W.$P1" -T "[2] list"
+tmux select-pane -t "$SESSION:$W.$P2" -T "[3] help"
 tmux set -g pane-border-status top
 
-tmux select-pane -t "$SESSION":0.0
+# rebind M-1/2/3 to actual pane indices (in case base-index shifted)
+tmux bind -n M-1 select-pane -t "$SESSION:$W.$P0"
+tmux bind -n M-2 select-pane -t "$SESSION:$W.$P1"
+tmux bind -n M-3 select-pane -t "$SESSION:$W.$P2"
+
+tmux select-pane -t "$SESSION:$W.$P0"
 tmux attach -t "$SESSION"
