@@ -46,6 +46,9 @@ tasks:
   check:
     desc: Query GitHub releases for all active tools, write cache/versions.json
     deps: [sync]
+    env:
+      GITHUB_TOKEN:
+        sh: gh auth token 2>/dev/null || echo ""
     cmds:
       - uv run python scripts/check_updates.py
 

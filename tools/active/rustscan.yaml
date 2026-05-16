@@ -4,9 +4,9 @@ repo: bee-san/RustScan
 homepage: https://github.com/bee-san/RustScan
 category: network
 tags: [portscan, rust, recon, nmap-wrapper]
-install: cargo install rustscan --locked
-update: cargo install rustscan --locked --force
-install_notes: "brew formula lags upstream (2.3.0 vs 2.4.1+). Use cargo for latest."
+install: cargo install rustscan --locked --target aarch64-apple-darwin
+update: cargo install rustscan --locked --target aarch64-apple-darwin --force
+install_notes: "brew formula lags upstream. Use cargo. macOS: pass --target aarch64-apple-darwin se ~/.cargo/config.toml forza Linux cross-target."
 check_version: rustscan --version | head -1 | awk '{print $2}'
 github_latest: true
 summary: "Modern port scanner — sweeps all 65535 ports in seconds, pipes results to nmap for fingerprinting."
