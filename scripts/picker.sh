@@ -10,7 +10,7 @@ while true; do
     | xargs -n1 basename \
     | sed 's/\.yaml$//' \
     | fzf --reverse \
-          --header='alexshell tools — focus to preview, enter to keep' \
+          --header=$'M-1 shell · M-2 list · M-3 help · M-h/j/k/l move · C-a r reload\n↑↓ navigate · enter select · / search · esc clear' \
           --preview="$ROOT/.venv/bin/python $ROOT/scripts/preview_help.py {}" \
           --preview-window=hidden \
           --bind "focus:execute-silent(echo {} > $SEL)" \
