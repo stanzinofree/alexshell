@@ -1,47 +1,52 @@
 {
   "aria2": {
-    "checked_at": "2026-05-16T07:45:50+00:00",
+    "checked_at": "2026-05-16T07:46:30+00:00",
     "latest": "release-1.37.0",
     "local": "1.37.0"
   },
   "bat": {
-    "checked_at": "2026-05-16T07:29:12+00:00",
+    "checked_at": "2026-05-16T07:46:30+00:00",
     "latest": "0.26.1",
     "local": "/bin/sh: 1: bat: not found"
   },
   "fd": {
-    "checked_at": "2026-05-16T07:29:12+00:00",
+    "checked_at": "2026-05-16T07:46:30+00:00",
     "latest": "10.4.2",
     "local": "/bin/sh: 1: fd: not found"
   },
   "glow": {
-    "checked_at": "2026-05-16T07:45:50+00:00",
+    "checked_at": "2026-05-16T07:46:30+00:00",
     "latest": "2.1.2",
-    "local": "2.1.2"
+    "local": "/bin/sh: 1: glow: not found"
   },
   "havn": {
-    "checked_at": "2026-05-16T07:45:50+00:00",
+    "checked_at": "2026-05-16T07:46:30+00:00",
     "latest": "0.3.7",
-    "local": "/bin/sh: havn: command not found"
+    "local": "/bin/sh: 1: havn: not found"
   },
   "helix": {
-    "checked_at": "2026-05-16T07:45:50+00:00",
+    "checked_at": "2026-05-16T07:46:30+00:00",
     "latest": "25.07.1",
-    "local": "/bin/sh: hx: command not found"
+    "local": "/bin/sh: 1: hx: not found"
   },
   "lnav": {
-    "checked_at": "2026-05-16T07:45:50+00:00",
+    "checked_at": "2026-05-16T07:46:30+00:00",
     "latest": "0.14.0",
-    "local": "/bin/sh: lnav: command not found"
+    "local": "/bin/sh: 1: lnav: not found"
   },
   "netop": {
-    "checked_at": "2026-05-16T07:45:50+00:00",
+    "checked_at": "2026-05-16T07:46:30+00:00",
     "latest": "v0.1.4",
-    "local": "/bin/sh: netop: command not found"
+    "local": "/bin/sh: 1: netop: not found"
   },
   "ripgrep": {
-    "checked_at": "2026-05-16T07:29:12+00:00",
+    "checked_at": "2026-05-16T07:46:30+00:00",
     "latest": "15.1.0",
     "local": "/bin/sh: 1: rg: not found"
+  },
+  "rustscan": {
+    "checked_at": "2026-05-16T07:46:30+00:00",
+    "latest": "2.4.1",
+    "local": "/bin/sh: 1: rustscan: not found"
   }
 }
