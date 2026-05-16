@@ -2,6 +2,19 @@
 
 Curated personal CLI tool index. YAML manifests → searchable HTML site + tmux/fzf launcher + update checker.
 
+## Setup
+
+Requires [uv](https://docs.astral.sh/uv/) + [go-task](https://taskfile.dev/). Optional: `tmux`, `fzf`, `glow`.
+
+```sh
+brew install uv go-task tmux fzf glow
+task sync     # create .venv from pyproject.toml + uv.lock
+task all      # check updates + build site
+task launch   # tmux 3-pane TUI
+```
+
+Python pinned `>=3.11` in `pyproject.toml`; uv auto-installs interpreter if missing.
+
 ## Layout
 
 ```

@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: '17 4 * * *'   # nightly 04:17 UTC
+    - cron: '17 4 * * *'
   workflow_dispatch:
 
 permissions:
@@ -21,20 +21,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: astral-sh/setup-uv@v3
         with:
-          python-version: '3.12'
-      - run: pip install -r requirements.txt
-      - name: check updates (GitHub releases only — no local binaries available)
+          enable-cache: true
+      - run: uv sync --frozen
+      - name: check updates (GitHub releases; local binaries unavailable in CI)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # CI has no local binaries, so check_version will mostly error;
-          # we still pull latest release tags into cache/versions.json.
-          python scripts/check_updates.py || true
+        run: uv run python scripts/check_updates.py || true
       - name: build site
-        run: python scripts/build_site.py
-      - name: commit cache
+        run: uv run python scripts/build_site.py
+      - name: commit cache + site
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"

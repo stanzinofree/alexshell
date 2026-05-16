@@ -4,3 +4,4 @@ __pycache__/
 .DS_Store
 .task/
 # keep cache/versions.json committed (drives site badges)
+.python-version
