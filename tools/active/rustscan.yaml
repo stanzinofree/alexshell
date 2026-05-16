@@ -1,0 +1,31 @@
+name: rustscan
+binary: rustscan
+repo: bee-san/RustScan
+homepage: https://github.com/bee-san/RustScan
+category: network
+tags: [portscan, rust, recon, nmap-wrapper]
+install: brew install rustscan
+update: brew upgrade rustscan
+check_version: rustscan --version | head -1 | awk '{print $2}'
+github_latest: true
+summary: "Modern port scanner — sweeps all 65535 ports in seconds, pipes results to nmap for fingerprinting."
+help: |
+  ## rustscan
+
+  Async Rust port sweeper. Finds open ports fast, then chains a default `nmap -A -sV` for service detection.
+
+  ### Top commands
+  - `rustscan -a 192.168.1.1` — full sweep + nmap
+  - `rustscan -a target.com -r 1-1000` — port range
+  - `rustscan -a host -p 22,80,443` — specific ports
+  - `rustscan -a host --ulimit 5000` — raise FD limit for speed
+  - `rustscan -a host -b 500` — batch size (lower if noisy network)
+  - `rustscan -a host -- -sC -sV -O` — pass flags after `--` to nmap
+  - `rustscan -a host -g` — greppable output, no nmap
+  - `rustscan -aL targets.txt` — file with IPs/CIDR
+
+  ### Pitfalls
+  - **Authorized targets only** — port scan illegale senza autorizzazione
+  - Default richiama `nmap`; install separato (`brew install nmap`)
+  - macOS: alza `ulimit -n 10000` per scan veloci
+  - Stealth zero — facilmente loggato/bannato da IDS; per recon serio usa `naabu` o `nmap -sS`

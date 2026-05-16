@@ -1,0 +1,32 @@
+name: aria2
+binary: aria2c
+repo: aria2/aria2
+homepage: https://aria2.github.io/
+category: download
+tags: [http, ftp, torrent, metalink, parallel]
+install: brew install aria2
+update: brew upgrade aria2
+check_version: aria2c --version | head -1 | awk '{print $3}'
+github_latest: true
+summary: "Multi-protocol, multi-source, multi-segment downloader (HTTP/FTP/SFTP/BitTorrent/Metalink)."
+help: |
+  ## aria2 (aria2c)
+
+  Segmented + multi-source download. 5-16 connections per file → faster than `curl`/`wget` on big files.
+
+  ### Top commands
+  - `aria2c URL` — basic download
+  - `aria2c -x 16 -s 16 URL` — 16 connections, 16 segments
+  - `aria2c -i list.txt` — batch from file (one URL per line)
+  - `aria2c -d /path -o name URL` — output dir + filename
+  - `aria2c -c URL` — resume partial download
+  - `aria2c URL1 URL2 URL3` — same file from 3 mirrors
+  - `aria2c file.torrent` — torrent client mode
+  - `aria2c magnet:?xt=...` — magnet link
+  - `aria2c --max-overall-download-limit=2M URL` — throttle
+  - `aria2c --enable-rpc --rpc-listen-all` — daemon mode (web UI via AriaNg)
+
+  ### Pitfalls
+  - Default `-x 5 -s 5` modesto — alza per file grossi
+  - Server può rifiutare multi-connection; alcuni CDN ratelimit per IP
+  - BT default scarica in cwd; usa `-d` per dir target

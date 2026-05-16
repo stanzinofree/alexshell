@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="it" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>glow — alexshell</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Space+Grotesk:wght@400;500;700&family=Caveat:wght@500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="../index.html">alexshell</a>
+    <nav>
+      <a href="../index.html">tools</a>
+      <a href="../discarded.html">discarded</a>
+      <a href="https://github.com" target="_blank" rel="noopener">repo ↗</a>
+    </nav>
+  </header>
+  <main>
+<article class="tool">
+  <header class="tool-head">
+    <h1>glow</h1>
+    <p class="lead">Render markdown beautifully in terminal — file, URL, stdin, or interactive TUI browser.</p>
+    <div class="meta">
+      <span class="pill">markdown</span>
+<span class="chip on">#render</span><span class="chip on">#viewer</span><span class="chip on">#tui</span><span class="chip on">#charm</span>    </div>
+    <div class="ver">
+      <span>local <code>2.1.2</code></span>
+      <span>latest <code>2.1.2</code></span>
+      <span class="badge badge-ok">
+up to date
+      </span>
+    </div>
+  </header>
+
+  <section class="cmds">
+    <h2>install / update</h2>
+    <pre><code># install
+brew install glow
+
+# update
+&lt;built-in method update of dict object at 0x103f44640&gt;
+
+# check version
+glow --version | awk &#39;{print $3}&#39;</code></pre>
+  </section>
+
+  <section class="helpdoc">
+    <h2>glow</h2>
+<p>Markdown renderer with style. Reads file, pipe, URL, or browses cwd interactively.</p>
+<h3>Top commands</h3>
+<ul>
+<li><code>glow README.md</code> — render single file</li>
+<li><code>glow</code> — interactive TUI: naviga cwd + GitHub stash</li>
+<li><code>cat doc.md | glow -</code> — pipe stdin</li>
+<li><code>glow -p file.md</code> — pager mode (less-like)</li>
+<li><code>glow https://raw.githubusercontent.com/owner/repo/main/README.md</code> — render URL</li>
+<li><code>glow -s dark file.md</code> — force style (dark/light/notty/auto)</li>
+<li><code>glow -w 100 file.md</code> — wrap width</li>
+</ul>
+<h3>Config</h3>
+<ul>
+<li><code>~/.config/glow/glow.yml</code> — default style/width/pager</li>
+<li>Custom styles JSON — see <code>glow stash</code> per gallery</li>
+</ul>
+<h3>Pitfalls</h3>
+<ul>
+<li>Render only — no edit. Pair con <code>helix</code> o editor preferito</li>
+<li>Tabelle wide possono troncare; alza <code>-w</code> o riduci font terminale</li>
+</ul>
+  </section>
+
+  <p><a href="https://github.com/charmbracelet/glow" target="_blank" rel="noopener">homepage ↗</a></p>
+</article>
+  </main>
+  <footer>
+    <span>Made with &lt;3 by Alessandro</span>
+    <span class="mono">build 2026-05-16</span>
+  </footer>
+</body>
+</html>

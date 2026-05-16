@@ -1,0 +1,32 @@
+name: glow
+binary: glow
+repo: charmbracelet/glow
+homepage: https://github.com/charmbracelet/glow
+category: markdown
+tags: [render, viewer, tui, charm]
+install: brew install glow
+update: brew upgrade glow
+check_version: glow --version | awk '{print $3}'
+github_latest: true
+summary: "Render markdown beautifully in terminal — file, URL, stdin, or interactive TUI browser."
+help: |
+  ## glow
+
+  Markdown renderer with style. Reads file, pipe, URL, or browses cwd interactively.
+
+  ### Top commands
+  - `glow README.md` — render single file
+  - `glow` — interactive TUI: naviga cwd + GitHub stash
+  - `cat doc.md | glow -` — pipe stdin
+  - `glow -p file.md` — pager mode (less-like)
+  - `glow https://raw.githubusercontent.com/owner/repo/main/README.md` — render URL
+  - `glow -s dark file.md` — force style (dark/light/notty/auto)
+  - `glow -w 100 file.md` — wrap width
+
+  ### Config
+  - `~/.config/glow/glow.yml` — default style/width/pager
+  - Custom styles JSON — see `glow stash` per gallery
+
+  ### Pitfalls
+  - Render only — no edit. Pair con `helix` o editor preferito
+  - Tabelle wide possono troncare; alza `-w` o riduci font terminale

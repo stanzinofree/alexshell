@@ -1,0 +1,50 @@
+name: lnav
+binary: lnav
+repo: tstack/lnav
+homepage: https://lnav.org
+category: logs
+tags: [log, tui, sql, tail, multi-file]
+install: brew install lnav
+update: brew upgrade lnav
+check_version: lnav -V | awk '{print $2}'
+github_latest: true
+summary: "Logfile navigator — auto-detect formats, merge multi-file timeline, SQL queries, live tail."
+help: |
+  ## lnav
+
+  Interactive TUI per log. Auto-rileva 20+ formati (syslog, nginx, apache, journald, json), merge cronologico, SQL su righe.
+
+  ### Launch
+  - `lnav file.log` — single file
+  - `lnav /var/log/` — auto-merge tutti i log nella dir
+  - `lnav -r file.log` — recursive directory
+  - `lnav file1 file2` — multi-file merge by timestamp
+  - `lnav -n file.log` — headless (no TUI, batch SQL/script)
+  - `journalctl -f | lnav` — pipe stream
+
+  ### Navigation (TUI)
+  - `q` quit, `?` help
+  - `/regex` search, `n`/`N` next/prev match
+  - `g` top, `G` bottom, `e`/`E` next/prev error
+  - `w`/`W` next/prev warning
+  - `:` command, `;` SQL prompt
+  - `t` toggle text/parsed view
+  - `p` show parsed fields under cursor
+  - `TAB` switch to query results pane
+
+  ### SQL examples (after `;`)
+  - `SELECT * FROM access_log WHERE sc_status >= 500;`
+  - `SELECT cs_uri_stem, count(*) FROM access_log GROUP BY 1 ORDER BY 2 DESC LIMIT 10;`
+  - `SELECT log_line, cs_user_agent FROM access_log WHERE sc_status = 404;`
+  - Schema dipende dal formato auto-detected
+
+  ### Config + format
+  - `~/.config/lnav/` — custom formats JSON
+  - `lnav -i format.json` — install custom format
+  - Hotkey `0`-`9` per bookmark
+
+  ### Pitfalls
+  - Format detection fallisce su log custom → scrivi JSON format
+  - SQL solo su log con format detected; testo libero → `grep`/`/`
+  - Headless mode (`-n`) ottimo per CI/script, dimenticato spesso
+  - Su file enormi (>5GB) prima indicizzazione lenta — pazienza al primo apri

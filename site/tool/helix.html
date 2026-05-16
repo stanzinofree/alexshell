@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="it" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>helix — alexshell</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Space+Grotesk:wght@400;500;700&family=Caveat:wght@500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="../index.html">alexshell</a>
+    <nav>
+      <a href="../index.html">tools</a>
+      <a href="../discarded.html">discarded</a>
+      <a href="https://github.com" target="_blank" rel="noopener">repo ↗</a>
+    </nav>
+  </header>
+  <main>
+<article class="tool">
+  <header class="tool-head">
+    <h1>helix</h1>
+    <p class="lead">Post-modern modal editor — batteries-included (LSP, tree-sitter, multi-cursor) no plugins required.</p>
+    <div class="meta">
+      <span class="pill">editor</span>
+<span class="chip on">#modal</span><span class="chip on">#lsp</span><span class="chip on">#rust</span><span class="chip on">#kakoune-inspired</span><span class="chip on">#markdown</span>    </div>
+    <div class="ver">
+      <span>local <code>/bin/sh: hx: command not found</code></span>
+      <span>latest <code>25.07.1</code></span>
+      <span class="badge badge-update">
+update available
+      </span>
+    </div>
+  </header>
+
+  <section class="cmds">
+    <h2>install / update</h2>
+    <pre><code># install
+brew install helix
+
+# update
+&lt;built-in method update of dict object at 0x103f46480&gt;
+
+# check version
+hx --version | awk &#39;{print $2}&#39;</code></pre>
+  </section>
+
+  <section class="helpdoc">
+    <h2>helix (hx)</h2>
+<p>Modal editor inspired by Kakoune + Vim. Built-in LSP, tree-sitter, multi-cursor, fuzzy picker, file tree. Zero-config out of the box.</p>
+<h3>Launch</h3>
+<ul>
+<li><code>hx file.md</code> — open file</li>
+<li><code>hx .</code> — open dir (picker)</li>
+<li><code>hx --health</code> — check LSP/tree-sitter status</li>
+<li><code>hx --tutor</code> — interactive tutorial (do once!)</li>
+</ul>
+<h3>Selection-first model (different from Vim!)</h3>
+<p>Selection → action. <code>w</code> SELECTS next word, then <code>d</code> deletes it.</p>
+<h3>Essential keys (normal mode)</h3>
+<ul>
+<li><code>w</code> <code>b</code> <code>e</code> — word motions (selecting)</li>
+<li><code>x</code> — select line, repeat to extend</li>
+<li><code>f&lt;char&gt;</code> / <code>t&lt;char&gt;</code> — find/till char on line</li>
+<li><code>d</code> cut, <code>y</code> yank, <code>p</code> paste, <code>c</code> change</li>
+<li><code>u</code> undo, <code>U</code> redo</li>
+<li><code>space f</code> — file picker (fuzzy)</li>
+<li><code>space /</code> — global grep</li>
+<li><code>space b</code> — buffer picker</li>
+<li><code>space s</code> — symbol picker (LSP)</li>
+<li><code>gd</code> go-to definition, <code>gr</code> references</li>
+<li><code>&lt;ret&gt;</code> (in space menu) — config picker</li>
+<li><code>:w</code> <code>:q</code> <code>:wq</code> save/quit</li>
+</ul>
+<h3>Multi-cursor</h3>
+<ul>
+<li><code>C</code> add cursor below, <code>,</code> keep primary only</li>
+<li><code>s&lt;regex&gt;&lt;ret&gt;</code> select all regex matches in selection</li>
+</ul>
+<h3>Markdown perks</h3>
+<ul>
+<li>Syntax via tree-sitter (built-in)</li>
+<li>LSP <code>marksman</code> se installato: <code>brew install marksman</code> → link follow, outline</li>
+</ul>
+<h3>Config</h3>
+<ul>
+<li><code>~/.config/helix/config.toml</code></li>
+<li><code>~/.config/helix/languages.toml</code> — per-lang LSP/formatter</li>
+</ul>
+<h3>Pitfalls</h3>
+<ul>
+<li>Vim muscle memory FAILS — re-learn (do <code>hx --tutor</code> once)</li>
+<li>LSP serve install separato (<code>marksman</code>, <code>pyright</code>, <code>gopls</code>, etc.)</li>
+<li>No plugin system (yet) — by design, batteries included</li>
+</ul>
+  </section>
+
+  <p><a href="https://helix-editor.com" target="_blank" rel="noopener">homepage ↗</a></p>
+</article>
+  </main>
+  <footer>
+    <span>Made with &lt;3 by Alessandro</span>
+    <span class="mono">build 2026-05-16</span>
+  </footer>
+</body>
+</html>

@@ -1,4 +1,9 @@
 {
+  "aria2": {
+    "checked_at": "2026-05-16T07:45:50+00:00",
+    "latest": "release-1.37.0",
+    "local": "1.37.0"
+  },
   "bat": {
     "checked_at": "2026-05-16T07:29:12+00:00",
     "latest": "0.26.1",
@@ -8,6 +13,31 @@
     "checked_at": "2026-05-16T07:29:12+00:00",
     "latest": "10.4.2",
     "local": "/bin/sh: 1: fd: not found"
+  },
+  "glow": {
+    "checked_at": "2026-05-16T07:45:50+00:00",
+    "latest": "2.1.2",
+    "local": "2.1.2"
+  },
+  "havn": {
+    "checked_at": "2026-05-16T07:45:50+00:00",
+    "latest": "0.3.7",
+    "local": "/bin/sh: havn: command not found"
+  },
+  "helix": {
+    "checked_at": "2026-05-16T07:45:50+00:00",
+    "latest": "25.07.1",
+    "local": "/bin/sh: hx: command not found"
+  },
+  "lnav": {
+    "checked_at": "2026-05-16T07:45:50+00:00",
+    "latest": "0.14.0",
+    "local": "/bin/sh: lnav: command not found"
+  },
+  "netop": {
+    "checked_at": "2026-05-16T07:45:50+00:00",
+    "latest": "v0.1.4",
+    "local": "/bin/sh: netop: command not found"
   },
   "ripgrep": {
     "checked_at": "2026-05-16T07:29:12+00:00",

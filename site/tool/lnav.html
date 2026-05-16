@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="it" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>lnav — alexshell</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Space+Grotesk:wght@400;500;700&family=Caveat:wght@500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="../index.html">alexshell</a>
+    <nav>
+      <a href="../index.html">tools</a>
+      <a href="../discarded.html">discarded</a>
+      <a href="https://github.com" target="_blank" rel="noopener">repo ↗</a>
+    </nav>
+  </header>
+  <main>
+<article class="tool">
+  <header class="tool-head">
+    <h1>lnav</h1>
+    <p class="lead">Logfile navigator — auto-detect formats, merge multi-file timeline, SQL queries, live tail.</p>
+    <div class="meta">
+      <span class="pill">logs</span>
+<span class="chip on">#log</span><span class="chip on">#tui</span><span class="chip on">#sql</span><span class="chip on">#tail</span><span class="chip on">#multi-file</span>    </div>
+    <div class="ver">
+      <span>local <code>/bin/sh: lnav: command not found</code></span>
+      <span>latest <code>0.14.0</code></span>
+      <span class="badge badge-update">
+update available
+      </span>
+    </div>
+  </header>
+
+  <section class="cmds">
+    <h2>install / update</h2>
+    <pre><code># install
+brew install lnav
+
+# update
+&lt;built-in method update of dict object at 0x103e61cc0&gt;
+
+# check version
+lnav -V | awk &#39;{print $2}&#39;</code></pre>
+  </section>
+
+  <section class="helpdoc">
+    <h2>lnav</h2>
+<p>Interactive TUI per log. Auto-rileva 20+ formati (syslog, nginx, apache, journald, json), merge cronologico, SQL su righe.</p>
+<h3>Launch</h3>
+<ul>
+<li><code>lnav file.log</code> — single file</li>
+<li><code>lnav /var/log/</code> — auto-merge tutti i log nella dir</li>
+<li><code>lnav -r file.log</code> — recursive directory</li>
+<li><code>lnav file1 file2</code> — multi-file merge by timestamp</li>
+<li><code>lnav -n file.log</code> — headless (no TUI, batch SQL/script)</li>
+<li><code>journalctl -f | lnav</code> — pipe stream</li>
+</ul>
+<h3>Navigation (TUI)</h3>
+<ul>
+<li><code>q</code> quit, <code>?</code> help</li>
+<li><code>/regex</code> search, <code>n</code>/<code>N</code> next/prev match</li>
+<li><code>g</code> top, <code>G</code> bottom, <code>e</code>/<code>E</code> next/prev error</li>
+<li><code>w</code>/<code>W</code> next/prev warning</li>
+<li><code>:</code> command, <code>;</code> SQL prompt</li>
+<li><code>t</code> toggle text/parsed view</li>
+<li><code>p</code> show parsed fields under cursor</li>
+<li><code>TAB</code> switch to query results pane</li>
+</ul>
+<h3>SQL examples (after <code>;</code>)</h3>
+<ul>
+<li><code>SELECT * FROM access_log WHERE sc_status &gt;= 500;</code></li>
+<li><code>SELECT cs_uri_stem, count(*) FROM access_log GROUP BY 1 ORDER BY 2 DESC LIMIT 10;</code></li>
+<li><code>SELECT log_line, cs_user_agent FROM access_log WHERE sc_status = 404;</code></li>
+<li>Schema dipende dal formato auto-detected</li>
+</ul>
+<h3>Config + format</h3>
+<ul>
+<li><code>~/.config/lnav/</code> — custom formats JSON</li>
+<li><code>lnav -i format.json</code> — install custom format</li>
+<li>Hotkey <code>0</code>-<code>9</code> per bookmark</li>
+</ul>
+<h3>Pitfalls</h3>
+<ul>
+<li>Format detection fallisce su log custom → scrivi JSON format</li>
+<li>SQL solo su log con format detected; testo libero → <code>grep</code>/<code>/</code></li>
+<li>Headless mode (<code>-n</code>) ottimo per CI/script, dimenticato spesso</li>
+<li>Su file enormi (&gt;5GB) prima indicizzazione lenta — pazienza al primo apri</li>
+</ul>
+  </section>
+
+  <p><a href="https://lnav.org" target="_blank" rel="noopener">homepage ↗</a></p>
+</article>
+  </main>
+  <footer>
+    <span>Made with &lt;3 by Alessandro</span>
+    <span class="mono">build 2026-05-16</span>
+  </footer>
+</body>
+</html>

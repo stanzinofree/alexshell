@@ -21,14 +21,137 @@
   <main>
 <section class="hero">
   <h1>alexshell</h1>
-  <p class="lead">curated cli tools — 3 active, 1 discarded.</p>
+  <p class="lead">curated cli tools — 10 active, 1 discarded.</p>
   <div class="filters">
     <input id="q" type="search" placeholder="search name, tag, summary…" />
     <div id="tagbar" class="tagbar">
-<button class="chip" data-tag="cat">cat</button><button class="chip" data-tag="fast">fast</button><button class="chip" data-tag="find">find</button><button class="chip" data-tag="grep">grep</button><button class="chip" data-tag="regex">regex</button><button class="chip" data-tag="rust">rust</button><button class="chip" data-tag="syntax">syntax</button>    </div>
+<button class="chip" data-tag="bandwidth">bandwidth</button><button class="chip" data-tag="cat">cat</button><button class="chip" data-tag="charm">charm</button><button class="chip" data-tag="ebpf">ebpf</button><button class="chip" data-tag="fast">fast</button><button class="chip" data-tag="find">find</button><button class="chip" data-tag="ftp">ftp</button><button class="chip" data-tag="grep">grep</button><button class="chip" data-tag="http">http</button><button class="chip" data-tag="kakoune-inspired">kakoune-inspired</button><button class="chip" data-tag="log">log</button><button class="chip" data-tag="lsp">lsp</button><button class="chip" data-tag="markdown">markdown</button><button class="chip" data-tag="metalink">metalink</button><button class="chip" data-tag="minimal">minimal</button><button class="chip" data-tag="modal">modal</button><button class="chip" data-tag="monitor">monitor</button><button class="chip" data-tag="multi-file">multi-file</button><button class="chip" data-tag="nmap-wrapper">nmap-wrapper</button><button class="chip" data-tag="parallel">parallel</button><button class="chip" data-tag="portscan">portscan</button><button class="chip" data-tag="recon">recon</button><button class="chip" data-tag="regex">regex</button><button class="chip" data-tag="render">render</button><button class="chip" data-tag="rust">rust</button><button class="chip" data-tag="sql">sql</button><button class="chip" data-tag="syntax">syntax</button><button class="chip" data-tag="tail">tail</button><button class="chip" data-tag="top">top</button><button class="chip" data-tag="torrent">torrent</button><button class="chip" data-tag="tui">tui</button><button class="chip" data-tag="viewer">viewer</button>    </div>
   </div>
 </section>
 
+<section class="cat">
+  <h2>download</h2>
+  <div class="grid">
+    <a class="card status-update" href="tool/aria2.html"
+       data-name="aria2" data-tags="http,ftp,torrent,metalink,parallel" data-summary="Multi-protocol, multi-source, multi-segment downloader (HTTP/FTP/SFTP/BitTorrent/Metalink).">
+      <div class="card-head">
+        <span class="name">aria2</span>
+        <span class="badge badge-update">
+update release-1.37.0
+        </span>
+      </div>
+      <p class="summary">Multi-protocol, multi-source, multi-segment downloader (HTTP/FTP/SFTP/BitTorrent/Metalink).</p>
+      <div class="card-foot">
+        <span class="mono">aria2c</span>
+        <span class="tags"><em>#http</em><em>#ftp</em><em>#torrent</em><em>#metalink</em><em>#parallel</em></span>
+      </div>
+    </a>
+  </div>
+</section>
+<section class="cat">
+  <h2>editor</h2>
+  <div class="grid">
+    <a class="card status-update" href="tool/helix.html"
+       data-name="helix" data-tags="modal,lsp,rust,kakoune-inspired,markdown" data-summary="Post-modern modal editor — batteries-included (LSP, tree-sitter, multi-cursor) no plugins required.">
+      <div class="card-head">
+        <span class="name">helix</span>
+        <span class="badge badge-update">
+update 25.07.1
+        </span>
+      </div>
+      <p class="summary">Post-modern modal editor — batteries-included (LSP, tree-sitter, multi-cursor) no plugins required.</p>
+      <div class="card-foot">
+        <span class="mono">hx</span>
+        <span class="tags"><em>#modal</em><em>#lsp</em><em>#rust</em><em>#kakoune-inspired</em><em>#markdown</em></span>
+      </div>
+    </a>
+  </div>
+</section>
+<section class="cat">
+  <h2>logs</h2>
+  <div class="grid">
+    <a class="card status-update" href="tool/lnav.html"
+       data-name="lnav" data-tags="log,tui,sql,tail,multi-file" data-summary="Logfile navigator — auto-detect formats, merge multi-file timeline, SQL queries, live tail.">
+      <div class="card-head">
+        <span class="name">lnav</span>
+        <span class="badge badge-update">
+update 0.14.0
+        </span>
+      </div>
+      <p class="summary">Logfile navigator — auto-detect formats, merge multi-file timeline, SQL queries, live tail.</p>
+      <div class="card-foot">
+        <span class="mono">lnav</span>
+        <span class="tags"><em>#log</em><em>#tui</em><em>#sql</em><em>#tail</em><em>#multi-file</em></span>
+      </div>
+    </a>
+  </div>
+</section>
+<section class="cat">
+  <h2>markdown</h2>
+  <div class="grid">
+    <a class="card status-ok" href="tool/glow.html"
+       data-name="glow" data-tags="render,viewer,tui,charm" data-summary="Render markdown beautifully in terminal — file, URL, stdin, or interactive TUI browser.">
+      <div class="card-head">
+        <span class="name">glow</span>
+        <span class="badge badge-ok">
+up to date
+        </span>
+      </div>
+      <p class="summary">Render markdown beautifully in terminal — file, URL, stdin, or interactive TUI browser.</p>
+      <div class="card-foot">
+        <span class="mono">glow</span>
+        <span class="tags"><em>#render</em><em>#viewer</em><em>#tui</em><em>#charm</em></span>
+      </div>
+    </a>
+  </div>
+</section>
+<section class="cat">
+  <h2>network</h2>
+  <div class="grid">
+    <a class="card status-update" href="tool/havn.html"
+       data-name="havn" data-tags="portscan,rust,fast,minimal" data-summary="Fast configurable port scanner with reasonable defaults — Rust, no external deps.">
+      <div class="card-head">
+        <span class="name">havn</span>
+        <span class="badge badge-update">
+update 0.3.7
+        </span>
+      </div>
+      <p class="summary">Fast configurable port scanner with reasonable defaults — Rust, no external deps.</p>
+      <div class="card-foot">
+        <span class="mono">havn</span>
+        <span class="tags"><em>#portscan</em><em>#rust</em><em>#fast</em><em>#minimal</em></span>
+      </div>
+    </a>
+    <a class="card status-update" href="tool/netop.html"
+       data-name="netop" data-tags="monitor,tui,ebpf,top,bandwidth" data-summary="Network top — eBPF-powered live bandwidth/connection monitor per process. Linux primary; macOS limited.">
+      <div class="card-head">
+        <span class="name">netop</span>
+        <span class="badge badge-update">
+update v0.1.4
+        </span>
+      </div>
+      <p class="summary">Network top — eBPF-powered live bandwidth/connection monitor per process. Linux primary; macOS limited.</p>
+      <div class="card-foot">
+        <span class="mono">netop</span>
+        <span class="tags"><em>#monitor</em><em>#tui</em><em>#ebpf</em><em>#top</em><em>#bandwidth</em></span>
+      </div>
+    </a>
+    <a class="card status-update" href="tool/rustscan.html"
+       data-name="rustscan" data-tags="portscan,rust,recon,nmap-wrapper" data-summary="Modern port scanner — sweeps all 65535 ports in seconds, pipes results to nmap for fingerprinting.">
+      <div class="card-head">
+        <span class="name">rustscan</span>
+        <span class="badge badge-update">
+update 2.4.1
+        </span>
+      </div>
+      <p class="summary">Modern port scanner — sweeps all 65535 ports in seconds, pipes results to nmap for fingerprinting.</p>
+      <div class="card-foot">
+        <span class="mono">rustscan</span>
+        <span class="tags"><em>#portscan</em><em>#rust</em><em>#recon</em><em>#nmap-wrapper</em></span>
+      </div>
+    </a>
+  </div>
+</section>
 <section class="cat">
   <h2>search</h2>
   <div class="grid">

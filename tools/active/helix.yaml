@@ -1,0 +1,55 @@
+name: helix
+binary: hx
+repo: helix-editor/helix
+homepage: https://helix-editor.com
+category: editor
+tags: [modal, lsp, rust, kakoune-inspired, markdown]
+install: brew install helix
+update: brew upgrade helix
+check_version: hx --version | awk '{print $2}'
+github_latest: true
+summary: "Post-modern modal editor — batteries-included (LSP, tree-sitter, multi-cursor) no plugins required."
+help: |
+  ## helix (hx)
+
+  Modal editor inspired by Kakoune + Vim. Built-in LSP, tree-sitter, multi-cursor, fuzzy picker, file tree. Zero-config out of the box.
+
+  ### Launch
+  - `hx file.md` — open file
+  - `hx .` — open dir (picker)
+  - `hx --health` — check LSP/tree-sitter status
+  - `hx --tutor` — interactive tutorial (do once!)
+
+  ### Selection-first model (different from Vim!)
+  Selection → action. `w` SELECTS next word, then `d` deletes it.
+
+  ### Essential keys (normal mode)
+  - `w` `b` `e` — word motions (selecting)
+  - `x` — select line, repeat to extend
+  - `f<char>` / `t<char>` — find/till char on line
+  - `d` cut, `y` yank, `p` paste, `c` change
+  - `u` undo, `U` redo
+  - `space f` — file picker (fuzzy)
+  - `space /` — global grep
+  - `space b` — buffer picker
+  - `space s` — symbol picker (LSP)
+  - `gd` go-to definition, `gr` references
+  - `<ret>` (in space menu) — config picker
+  - `:w` `:q` `:wq` save/quit
+
+  ### Multi-cursor
+  - `C` add cursor below, `,` keep primary only
+  - `s<regex><ret>` select all regex matches in selection
+
+  ### Markdown perks
+  - Syntax via tree-sitter (built-in)
+  - LSP `marksman` se installato: `brew install marksman` → link follow, outline
+
+  ### Config
+  - `~/.config/helix/config.toml`
+  - `~/.config/helix/languages.toml` — per-lang LSP/formatter
+
+  ### Pitfalls
+  - Vim muscle memory FAILS — re-learn (do `hx --tutor` once)
+  - LSP serve install separato (`marksman`, `pyright`, `gopls`, etc.)
+  - No plugin system (yet) — by design, batteries included

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="it" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>netop — alexshell</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Space+Grotesk:wght@400;500;700&family=Caveat:wght@500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="../index.html">alexshell</a>
+    <nav>
+      <a href="../index.html">tools</a>
+      <a href="../discarded.html">discarded</a>
+      <a href="https://github.com" target="_blank" rel="noopener">repo ↗</a>
+    </nav>
+  </header>
+  <main>
+<article class="tool">
+  <header class="tool-head">
+    <h1>netop</h1>
+    <p class="lead">Network top — eBPF-powered live bandwidth/connection monitor per process. Linux primary; macOS limited.</p>
+    <div class="meta">
+      <span class="pill">network</span>
+<span class="chip on">#monitor</span><span class="chip on">#tui</span><span class="chip on">#ebpf</span><span class="chip on">#top</span><span class="chip on">#bandwidth</span>    </div>
+    <div class="ver">
+      <span>local <code>/bin/sh: netop: command not found</code></span>
+      <span>latest <code>v0.1.4</code></span>
+      <span class="badge badge-update">
+update available
+      </span>
+    </div>
+  </header>
+
+  <section class="cmds">
+    <h2>install / update</h2>
+    <pre><code># install
+cargo install netop
+
+# update
+&lt;built-in method update of dict object at 0x103f47000&gt;
+
+# check version
+netop --version | awk &#39;{print $2}&#39;</code></pre>
+  </section>
+
+  <section class="helpdoc">
+    <h2>netop</h2>
+<p>htop-style TUI for network traffic. Sort by RX/TX per process/connection. Uses eBPF on Linux.</p>
+<h3>Install notes</h3>
+<ul>
+<li><strong>Linux</strong>: <code>cargo install netop</code> (richiede kernel 5.x+ con BPF, headers)</li>
+<li><strong>macOS</strong>: support limitato (no eBPF); funziona via fallback ma feature ridotte</li>
+<li>Alternativa cross-platform più matura: <code>bandwhich</code> o <code>nethogs</code> (Linux only)</li>
+</ul>
+<h3>Top commands</h3>
+<ul>
+<li><code>sudo netop</code> — launch (root serve per eBPF capture)</li>
+<li><code>netop --help</code> — flag list</li>
+<li>Inside TUI:</li>
+<li><code>q</code> quit</li>
+<li>sort: tab between RX/TX/total</li>
+<li>filter by PID/process name</li>
+</ul>
+<h3>Pitfalls</h3>
+<ul>
+<li><strong>Root required</strong> (eBPF + raw sockets)</li>
+<li>macOS: usa <code>bandwhich</code> come alternativa (<code>brew install bandwhich</code>) — più stabile per Mac</li>
+<li>No brew formula; cargo-only install</li>
+<li>Verifica versione recente in repo — progetto giovane</li>
+</ul>
+  </section>
+
+  <p><a href="https://github.com/ZingerLittleBee/netop" target="_blank" rel="noopener">homepage ↗</a></p>
+</article>
+  </main>
+  <footer>
+    <span>Made with &lt;3 by Alessandro</span>
+    <span class="mono">build 2026-05-16</span>
+  </footer>
+</body>
+</html>

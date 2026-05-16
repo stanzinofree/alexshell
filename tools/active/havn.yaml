@@ -1,0 +1,31 @@
+name: havn
+binary: havn
+repo: mrjackwills/havn
+homepage: https://github.com/mrjackwills/havn
+category: network
+tags: [portscan, rust, fast, minimal]
+install: brew install havn
+update: brew upgrade havn
+check_version: havn --version | awk '{print $2}'
+github_latest: true
+summary: "Fast configurable port scanner with reasonable defaults — Rust, no external deps."
+help: |
+  ## havn
+
+  Minimal port scanner — single binary, no nmap chain. Più semplice di rustscan, niente fingerprint.
+
+  ### Top commands
+  - `havn 192.168.1.1` — scan top ~1000 ports (default)
+  - `havn -a target.com` — scan ALL 65535 ports
+  - `havn -p 22,80,443 host` — specific ports
+  - `havn -p 1-1000 host` — range
+  - `havn -c 1000 host` — concurrency (default 1000)
+  - `havn -t 5000 host` — timeout ms (default 2000)
+  - `havn -m monochrome host` — no color (CI/pipe)
+  - `havn -j host` — JSON output
+
+  ### Pitfalls
+  - **Authorized targets only**
+  - No service detection (by design) — usa rustscan/nmap se serve
+  - Stateful TCP connect; ratelimit/firewall droppa silenziosamente → false negative
+  - Tune `-c` su LAN vs WAN (default 1000 troppo aggressivo per WAN debole)

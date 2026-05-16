@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="it" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>havn — alexshell</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Space+Grotesk:wght@400;500;700&family=Caveat:wght@500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="../index.html">alexshell</a>
+    <nav>
+      <a href="../index.html">tools</a>
+      <a href="../discarded.html">discarded</a>
+      <a href="https://github.com" target="_blank" rel="noopener">repo ↗</a>
+    </nav>
+  </header>
+  <main>
+<article class="tool">
+  <header class="tool-head">
+    <h1>havn</h1>
+    <p class="lead">Fast configurable port scanner with reasonable defaults — Rust, no external deps.</p>
+    <div class="meta">
+      <span class="pill">network</span>
+<span class="chip on">#portscan</span><span class="chip on">#rust</span><span class="chip on">#fast</span><span class="chip on">#minimal</span>    </div>
+    <div class="ver">
+      <span>local <code>/bin/sh: havn: command not found</code></span>
+      <span>latest <code>0.3.7</code></span>
+      <span class="badge badge-update">
+update available
+      </span>
+    </div>
+  </header>
+
+  <section class="cmds">
+    <h2>install / update</h2>
+    <pre><code># install
+brew install havn
+
+# update
+&lt;built-in method update of dict object at 0x103d04ec0&gt;
+
+# check version
+havn --version | awk &#39;{print $2}&#39;</code></pre>
+  </section>
+
+  <section class="helpdoc">
+    <h2>havn</h2>
+<p>Minimal port scanner — single binary, no nmap chain. Più semplice di rustscan, niente fingerprint.</p>
+<h3>Top commands</h3>
+<ul>
+<li><code>havn 192.168.1.1</code> — scan top ~1000 ports (default)</li>
+<li><code>havn -a target.com</code> — scan ALL 65535 ports</li>
+<li><code>havn -p 22,80,443 host</code> — specific ports</li>
+<li><code>havn -p 1-1000 host</code> — range</li>
+<li><code>havn -c 1000 host</code> — concurrency (default 1000)</li>
+<li><code>havn -t 5000 host</code> — timeout ms (default 2000)</li>
+<li><code>havn -m monochrome host</code> — no color (CI/pipe)</li>
+<li><code>havn -j host</code> — JSON output</li>
+</ul>
+<h3>Pitfalls</h3>
+<ul>
+<li><strong>Authorized targets only</strong></li>
+<li>No service detection (by design) — usa rustscan/nmap se serve</li>
+<li>Stateful TCP connect; ratelimit/firewall droppa silenziosamente → false negative</li>
+<li>Tune <code>-c</code> su LAN vs WAN (default 1000 troppo aggressivo per WAN debole)</li>
+</ul>
+  </section>
+
+  <p><a href="https://github.com/mrjackwills/havn" target="_blank" rel="noopener">homepage ↗</a></p>
+</article>
+  </main>
+  <footer>
+    <span>Made with &lt;3 by Alessandro</span>
+    <span class="mono">build 2026-05-16</span>
+  </footer>
+</body>
+</html>
