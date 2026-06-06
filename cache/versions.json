@@ -1,51 +1,51 @@
 {
   "aria2": {
-    "checked_at": "2026-06-05T08:16:16+00:00",
+    "checked_at": "2026-06-06T07:24:35+00:00",
     "latest": "1.37.0",
     "local": "1.37.0"
   },
   "bandwhich": {
-    "checked_at": "2026-06-05T08:16:16+00:00",
+    "checked_at": "2026-06-06T07:24:35+00:00",
     "latest": "0.23.1",
     "local": "/bin/sh: 1: bandwhich: not found"
   },
   "bat": {
-    "checked_at": "2026-06-05T08:16:16+00:00",
+    "checked_at": "2026-06-06T07:24:35+00:00",
     "latest": "0.26.1",
     "local": "/bin/sh: 1: bat: not found"
   },
   "fd": {
-    "checked_at": "2026-06-05T08:16:16+00:00",
+    "checked_at": "2026-06-06T07:24:35+00:00",
     "latest": "10.4.2",
     "local": "/bin/sh: 1: fd: not found"
   },
   "glow": {
-    "checked_at": "2026-06-05T08:16:16+00:00",
+    "checked_at": "2026-06-06T07:24:35+00:00",
     "latest": "2.1.2",
     "local": "/bin/sh: 1: glow: not found"
   },
   "havn": {
-    "checked_at": "2026-06-05T08:16:16+00:00",
+    "checked_at": "2026-06-06T07:24:35+00:00",
     "latest": "0.3.7",
     "local": "/bin/sh: 1: havn: not found"
   },
   "helix": {
-    "checked_at": "2026-06-05T08:16:16+00:00",
+    "checked_at": "2026-06-06T07:24:35+00:00",
     "latest": "25.07.1",
     "local": "/bin/sh: 1: hx: not found"
   },
   "lnav": {
-    "checked_at": "2026-06-05T08:16:16+00:00",
+    "checked_at": "2026-06-06T07:24:35+00:00",
     "latest": "0.14.0",
     "local": "/bin/sh: 1: lnav: not found"
   },
   "ripgrep": {
-    "checked_at": "2026-06-05T08:16:16+00:00",
+    "checked_at": "2026-06-06T07:24:35+00:00",
     "latest": "15.1.0",
     "local": "/bin/sh: 1: rg: not found"
   },
   "rustscan": {
-    "checked_at": "2026-06-05T08:16:16+00:00",
+    "checked_at": "2026-06-06T07:24:35+00:00",
     "latest": "2.4.1",
     "local": "/bin/sh: 1: rustscan: not found"
   }
